@@ -50,8 +50,8 @@ class ApiController extends Controller
 
     public function obtenerComputadores(Request $request)
     {
-        $idSala = $request -> idSala;
-        $computadores = DB::table('computadores')->where([['sala_id', '=', $idSala],]);
+        $idSala = $request -> idsala;
+        $computadores = DB::table('computadores')->where([['sala_id', '=', $idSala]])->get();
         return Response::json($computadores, 200);
     }
 }
