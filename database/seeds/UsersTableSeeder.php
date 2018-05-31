@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         ];
         $api_tokens = [
             0 => "tnrApcPohoar9padK6JTEY3Z8mm7OkzkyLYUXgzjnJbqOg3DT1tOIuhQKBfM",
-            1 => "123123"
+            1 => "$2y$10$X0yixpWjRsiSkQyK6SoCN.dvmYVBWK9b9uTSOmpXws8ITpYr9y.yO"
         ];
         $passwords = [
             0 => "salasclient",
