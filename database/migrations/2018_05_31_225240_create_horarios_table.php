@@ -15,10 +15,10 @@ class CreateHorariosTable extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('sala_id');
-            $table->foreign('sala_id')->references('id')->on('salas');
             $table->unsignedInteger('dia_id');
             $table->foreign('dia_id')->references('id')->on('dias');
+            $table->unsignedInteger('sala_id');
+            $table->foreign('sala_id')->references('id')->on('salas');
             $table->timestamps();
         });
     }
