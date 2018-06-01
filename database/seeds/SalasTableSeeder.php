@@ -15,6 +15,7 @@ class SalasTableSeeder extends Seeder
         DB::table('salas')->insert([
             'nombre' => 'Laboratiorio de Ingeniería y Arquitectura de Software',
             'idSala' => 'lias001',
+            'estado' => 'Disponible',
             'created_at' => \Carbon\Carbon::now(),
             'updated_at' => \Carbon\Carbon::now(),
         ]);

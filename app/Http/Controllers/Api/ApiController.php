@@ -51,6 +51,7 @@ class ApiController extends Controller
                 $computador -> save();
             }
         }
+        $this->calcularDisponibilidadSalas();
         return Response::json($computadores, 200);
     }
 
@@ -128,5 +129,39 @@ class ApiController extends Controller
         $dia = DB::table('dias')->where([
             ['id', '=', $request -> id]])->first();
         return Response::json($dia, 200);
+    }
+
+    public function calcularDisponibilidadSalas()
+    {
+        $salas = Sala::all();
+        foreach ($salas as $sala)
+        {
+            $idSala = $sala -> idSala;
+            $reservas = DB::table('reservas')->where([
+                ['sala_id', '=', $idSala]])->get();
+            $cambio = 0;
+            foreach ($reservas as $reserva)
+            {
+                $fechaActual = Carbon::now();
+                $fechaInicio = $reserva -> fecha_inicio;
+                $fechaFin = $reserva -> fecha_fin;
+                $difMin = $fechaActual -> diffInSeconds($fechaInicio);
+                $difMax = $fechaActual -> diffInSeconds($fechaFin);
+                if ($difMin > 0 && $difMax < 0)
+                {
+                    $cambio = 1;
+                }
+            }
+            if ($cambio == 1)
+            {
+                $sala -> estado = "Ocupada";
+                $sala -> save();
+            }
+            else
+            {
+                $sala -> estado = "Disponible";
+                $sala -> save();
+            }
+        }
     }
 }

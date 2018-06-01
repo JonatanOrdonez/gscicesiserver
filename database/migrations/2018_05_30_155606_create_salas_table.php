@@ -17,6 +17,7 @@ class CreateSalasTable extends Migration
             $table->increments('id');
             $table->string('idSala', 60)->unique();
             $table->string('nombre', 60)->unique();
+            $table->string('estado', 60);
             $table->timestamps();
         });
     }
