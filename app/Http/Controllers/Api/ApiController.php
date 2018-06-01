@@ -104,6 +104,7 @@ class ApiController extends Controller
             ['sala_id', '=', $reserva -> sala_id]])->get();
         return Response::json($reservas, 200);
     }
+
     /**
      * Obtiene la lista de reservas de una sala
      * @param  \Illuminate\Http\Request  $request
@@ -115,5 +116,17 @@ class ApiController extends Controller
         $reservas = DB::table('reservas')->where([
             ['sala_id', '=', $idSala]])->get();
         return Response::json($reservas, 200);
+    }
+
+    /**
+     * Obtiene un día de la semana por su id
+     * @param  \Illuminate\Http\Request  $request
+     * @return JSON: Día de la semana
+     */
+    public function obtenerDiaSemana(Request $request)
+    {
+        $dia = DB::table('dias')->where([
+            ['id', '=', $request -> id]])->first();
+        return Response::json($dia, 200);
     }
 }
