@@ -23,7 +23,7 @@ class ComputadoresTableSeeder extends Seeder
             DB::table('computadores')->insert([
                 'idComputador' => $idComputadores[$i],
                 'sala_id' => 1,
-                'estado' => 'disponible',
+                'estado' => 'Disponible',
                 'last_connection' => \Carbon\Carbon::now(),
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now()
