@@ -122,7 +122,7 @@ class ApiController extends Controller
     /**
      * Obtiene un día de la semana por su id
      * @param  \Illuminate\Http\Request  $request
-     * @return JSON: Día de la semana
+     * @return JSON: Día de la semana en formato JSON
      */
     public function obtenerDiaSemana(Request $request)
     {
@@ -131,6 +131,9 @@ class ApiController extends Controller
         return Response::json($dia, 200);
     }
 
+    /**
+     * Calcula la disponibilidad de una sala a partir de sus reservas
+     */
     public function calcularDisponibilidadSalas()
     {
         $salas = Sala::all();
@@ -163,5 +166,21 @@ class ApiController extends Controller
                 $sala -> save();
             }
         }
+    }
+
+    /**
+     * Obtiene la lista de reservas a partir de un día y la sala
+     * @param  \Illuminate\Http\Request  $request
+     * @return JSON: Reservas de una sala en un día determinado en formato JSON
+     */
+    public function obtenerReservasPorSalaDia(Request $request)
+    {
+        $idSala = $request -> idSala;
+        $idDia = $request -> idDia;
+        $reservas = DB::table('reservas')->where([
+            ['sala_id', '=', $idSala],
+            ['dia_id', '=', $idDia],
+        ])->get();
+        return Response::json($reservas, 200);
     }
 }

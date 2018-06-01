@@ -26,6 +26,7 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:api'], function () {
     Route::post('addreserva', ['uses' => 'Api\ApiController@agregarReserva']);
     Route::post('getreservassala', ['uses' => 'Api\ApiController@obtenerReservasPorSala']);
     Route::post('getdiasemana', ['uses' => 'Api\ApiController@obtenerDiaSemana']);
+    Route::post('getresdiasal', ['uses' => 'Api\ApiController@obtenerReservasPorSalaDia']);
 });
 
 Route::group(['prefix' => 'get', 'middleware' => 'auth:api'], function () {
