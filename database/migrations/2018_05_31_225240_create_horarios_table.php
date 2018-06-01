@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComputadoresTable extends Migration
+class CreateHorariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateComputadoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('computadores', function (Blueprint $table) {
+        Schema::create('horarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('idComputador', 60)->unique();
-            $table->string('estado', 60);
-            $table->timestamp('last_connection');
             $table->unsignedInteger('sala_id');
             $table->foreign('sala_id')->references('id')->on('salas');
+            $table->unsignedInteger('dia_id');
+            $table->foreign('dia_id')->references('id')->on('dias');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateComputadoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('computadores');
+        Schema::dropIfExists('horarios');
     }
 }
