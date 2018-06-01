@@ -20,6 +20,8 @@ class CreateReservasTable extends Migration
             $table->string('descripcion', 60);
             $table->unsignedInteger('dia_id');
             $table->foreign('dia_id')->references('id')->on('dias');
+            $table->unsignedInteger('sala_id');
+            $table->foreign('sala_id')->references('id')->on('salas');
             $table->timestamps();
         });
     }
