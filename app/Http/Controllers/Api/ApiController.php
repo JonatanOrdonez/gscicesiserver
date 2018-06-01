@@ -85,4 +85,21 @@ class ApiController extends Controller
         $dias = Dia::all();
         return Response::json($dias, 200);
     }
+
+    /**
+     * Guarda una reserva en la base de datos y retorna una lista de reservas de la sala
+     * @param  \Illuminate\Http\Request  $request
+     * @return JSON: Lista en formato JSON con las reservas de la sala
+     */
+    public function agregarReserva(Request $request)
+    {
+        $reserva = new Reserva();
+        $reserva -> fecha_inicio = Carbon::createFromTimeString( $request -> fecha_inicio );
+        $reserva -> fecha_fin = Carbon::createFromTimeString( $request -> fecha_fin );
+        $reserva -> descripcion = $request -> descripcion;
+        $reserva -> dia_id = $request -> dia_id;
+        $reserva -> sala_id = $request -> sala_id;
+        $reserva -> save();
+        return Response::json($dias, 200);
+    }
 }
