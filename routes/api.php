@@ -22,6 +22,7 @@ Route::group(['prefix' => 'post', 'middleware' => 'auth:api'], function () {
     Route::post('updatestates', ['uses' => 'Api\ApiController@actualizarEstados']);
     Route::post('getpcsbysala', ['uses' => 'Api\ApiController@obtenerComputadores']);
     Route::post('getsalas', ['uses' => 'Api\ApiController@obtenerSalas']);
+    Route::post('getdias', ['uses' => 'Api\ApiController@obtenerDias']);
 });
 
 Route::group(['prefix' => 'get', 'middleware' => 'auth:api'], function () {

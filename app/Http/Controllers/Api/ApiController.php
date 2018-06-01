@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Computador;
+use App\Models\Dia;
+use App\Models\Reserva;
 use App\Models\Sala;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -66,12 +68,21 @@ class ApiController extends Controller
 
     /**
      * Obtiene una lista con todos los computadores de una sala
-     * @param  \Illuminate\Http\Request  $request
      * @return JSON: Lista en formato JSON con los computadores de una sala
      */
     public function obtenerSalas()
     {
         $salas = Sala::all();
         return Response::json($salas, 200);
+    }
+
+    /**
+     * Obtiene una lista con todos los días de la semana
+     * @return JSON: Lista en formato JSON con los computadores de una sala
+     */
+    public function obtenerDias()
+    {
+        $dias = Dia::all();
+        return Response::json($dias, 200);
     }
 }
