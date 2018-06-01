@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DiasSeeder extends Seeder
+class DiasTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -23,9 +23,9 @@ class DiasSeeder extends Seeder
         $cantidad = 7;
         for ($i = 0; $i < $cantidad; $i++) {
             DB::table('dias')->insert([
-                'diasemana' => $dia[$i],
+                'dia_semana' => $dia[$i],
                 'created_at' => \Carbon\Carbon::now(),
-                'updated_at' => \Carbon\Carbon::now()
+                'updated_at' => \Carbon\Carbon::now(),
             ]);
         }
     }
