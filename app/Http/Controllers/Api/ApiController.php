@@ -104,4 +104,16 @@ class ApiController extends Controller
             ['sala_id', '=', $reserva -> sala_id]])->get();
         return Response::json($reservas, 200);
     }
+    /**
+     * Obtiene la lista de reservas de una sala
+     * @param  \Illuminate\Http\Request  $request
+     * @return JSON: Lista en formato JSON con las reservas de la sala
+     */
+    public function obtenerReservasPorSala(Request $request)
+    {
+        $idSala = $request -> idsala;
+        $reservas = DB::table('reservas')->where([
+            ['sala_id', '=', $idSala]])->get();
+        return Response::json($reservas, 200);
+    }
 }
