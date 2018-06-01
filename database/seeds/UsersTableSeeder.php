@@ -27,6 +27,11 @@ class UsersTableSeeder extends Seeder
             1 => '$2y$10$X0yixpWjRsiSkQyK6SoCN.dvmYVBWK9b9uTSOmpXws8ITpYr9y.yO',
             2 => 'E3i3UkYkCo6G0GT7Cf7Dlnj4ql8RPSVEPJgZTnUm11CJ4L5dERCb3qLHKkzL'
         ];
+        $passwords = [
+            0 => 'salasclient',
+            1 => 'angularclient',
+            2 => 'administrador'
+        ];
         $cantidad = 3;
         for ($i = 0; $i < $cantidad; $i++) {
             DB::table('users')->insert([
