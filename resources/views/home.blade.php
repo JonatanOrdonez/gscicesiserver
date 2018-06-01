@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                        <p class="text-center"><button type="button" class="btn btn-primary" onclick="window.location='{{ url("/reservas") }}'">Registrar reserva</button></p>
+                        <p class="text-center"><a type="button" class="btn btn-primary" href="https://gscicesiview.herokuapp.com/">Ver información de salas</a></p>
                 </div>
             </div>
         </div>
