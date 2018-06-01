@@ -26,7 +26,7 @@ class ApiController extends Controller
         DB::table('computadores')->where([
             ['sala_id', '=', $idsala],
             ['idComputador', '=', $idpc],
-        ])->update(['last_connection' => $fecha, 'estado' => "ocupado"]);
+        ])->update(['last_connection' => $fecha, 'estado' => "Ocupado"]);
 
         return $fecha;
     }
@@ -41,7 +41,7 @@ class ApiController extends Controller
             $diferencia = $fechaActual->diffInSeconds($fechaComputador);
             if($diferencia > 10)
             {
-                $computador -> estado = "disponible";
+                $computador -> estado = "Disponible";
                 $computador -> save();
             }
         }
