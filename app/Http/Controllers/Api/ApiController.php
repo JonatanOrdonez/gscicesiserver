@@ -100,6 +100,8 @@ class ApiController extends Controller
         $reserva -> dia_id = $request -> dia_id;
         $reserva -> sala_id = $request -> sala_id;
         $reserva -> save();
-        return Response::json($dias, 200);
+        $reservas = DB::table('reservas')->where([
+            ['sala_id', '=', $reserva -> sala_id]])->get();
+        return Response::json($reservas, 200);
     }
 }
