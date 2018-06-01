@@ -51,7 +51,6 @@ class ApiController extends Controller
                 $computador -> save();
             }
         }
-        $this->calcularDisponibilidadSalas();
         return Response::json($computadores, 200);
     }
 
