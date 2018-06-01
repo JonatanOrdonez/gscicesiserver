@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Computador;
+use App\Models\Sala;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -13,10 +14,9 @@ use Carbon\Carbon;
 class ApiController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
-     *
+     * Actualiza la fecha de un computador recibiendo la identificación de la sala y la id del pc
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return $fecha: Nueva fecha del computador
      */
     public function actualizarFechaComputador(Request $request)
     {
@@ -31,6 +31,10 @@ class ApiController extends Controller
         return $fecha;
     }
 
+    /**
+     * Actualiza el estado de los computadores a partir de la diferencia en segundos de su última conexión
+     * @return JSON: Lista en formato JSON con toda la información de los computadores
+     */
     public function actualizarEstados()
     {
         $computadores = Computador::all();
@@ -48,16 +52,26 @@ class ApiController extends Controller
         return Response::json($computadores, 200);
     }
 
+    /**
+     * Obtiene una lista con todos los computadores de una sala
+     * @param  \Illuminate\Http\Request  $request
+     * @return JSON: Lista en formato JSON con los computadores de una sala
+     */
     public function obtenerComputadores(Request $request)
     {
         $idSala = $request -> idsala;
         $computadores = DB::table('computadores')->where([['sala_id', '=', $idSala]])->get();
         return Response::json($computadores, 200);
     }
-    
-    public function getpcstotales()
+
+    /**
+     * Obtiene una lista con todos los computadores de una sala
+     * @param  \Illuminate\Http\Request  $request
+     * @return JSON: Lista en formato JSON con los computadores de una sala
+     */
+    public function obtenerSalas()
     {
-        $computadores=Computador::all();
-        return Response::json($computadores, 200);
+        $salas = Sala::all();
+        return Response::json($salas, 200);
     }
 }
