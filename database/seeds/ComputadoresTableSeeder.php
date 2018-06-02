@@ -29,5 +29,22 @@ class ComputadoresTableSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now()
             ]);
         }
+        $idComputadores2 = [
+            0 => "LABINGSW06",
+            1 => "LABINGSW07",
+            2 => "LABINGSW08",
+            3 => "LABINGSW09",
+        ];
+        $cantidad = 4;
+        for ($i = 0; $i < $cantidad; $i++) {
+            DB::table('computadores')->insert([
+                'idComputador' => $idComputadores2[$i],
+                'sala_id' => 2,
+                'estado' => 'Disponible',
+                'last_connection' => \Carbon\Carbon::now(),
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now()
+            ]);
+        }
     }
 }
