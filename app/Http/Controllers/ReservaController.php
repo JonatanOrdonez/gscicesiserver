@@ -51,10 +51,12 @@ class ReservaController extends Controller
         $fechafin = $request -> fechafin;
         $actividad = $request -> actividad;
 
+        $diasemana = DB::table('dias')->where([['id', '=', $dia]])->first()->dia_semana;
         $reserva = new Reserva();
         $reserva -> fecha_inicio = Carbon::createFromTimeString( $fechainicio );
         $reserva -> fecha_fin = Carbon::createFromTimeString( $fechafin );
         $reserva -> descripcion = $actividad;
+        $reserva -> dia_semana = $diasemana;
         $reserva -> dia_id = $dia;
         $reserva -> sala_id = $sala;
         $reserva -> save();
