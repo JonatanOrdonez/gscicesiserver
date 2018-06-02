@@ -11,7 +11,7 @@
                         <div class="form-group row">
                             {!! Form::label('labsala', "Seleccione una sala",  array('class' => 'col-md-4 col-form-label text-md-right')) !!}
                             <div class="col-md-6">
-                                {!!  Form::select('sala', ['1' => 'Laboratiorio de Ingeniería y Arquitectura de Software'],  '1', ['class' => 'form-control' ]) !!}
+                                {!!  Form::select('sala', ['1' => 'Laboratiorio de Ingeniería y Arquitectura de Software (Uno)', '2' => 'Laboratiorio de Ingeniería y Arquitectura de Software (Dos)'],  '1', ['class' => 'form-control' ]) !!}
 
                             </div>
                         </div>
