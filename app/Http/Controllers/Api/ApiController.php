@@ -93,12 +93,47 @@ class ApiController extends Controller
      */
     public function agregarReserva(Request $request)
     {
+        $dianumero = $request -> dia_id;
+        $diaSemana = "";
+        if ($dianumero == 1)
+        {
+            $diaSemana = "Lunes";
+        }
+        elseif ($dianumero == 2)
+        {
+            $diaSemana = "Martes";
+        }
+        elseif ($dianumero == 3)
+        {
+            $diaSemana = "Miercoles";
+        }
+        elseif ($dianumero == 4)
+        {
+            $diaSemana == "Jueves";
+        }
+        elseif ($dianumero == 5)
+        {
+            $diaSemana = "Jueves";
+        }
+        elseif ($dianumero == 6)
+        {
+            $diaSemana = "Viernes";
+        }
+        elseif ($dianumero == 7)
+        {
+            $diaSemana = "Sabado";
+        }
+        else
+        {
+            $diaSemana = "Domingo";
+        }
         $reserva = new Reserva();
         $reserva -> fecha_inicio = Carbon::createFromTimeString( $request -> fecha_inicio );
         $reserva -> fecha_fin = Carbon::createFromTimeString( $request -> fecha_fin );
         $reserva -> descripcion = $request -> descripcion;
         $reserva -> dia_id = $request -> dia_id;
         $reserva -> sala_id = $request -> sala_id;
+        $reserva -> dia_semana = $diaSemana;
         $reserva -> save();
         $reservas = DB::table('reservas')->where([
             ['sala_id', '=', $reserva -> sala_id]])->get();

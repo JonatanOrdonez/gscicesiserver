@@ -8,7 +8,7 @@ class Reserva extends Model
 {
     protected $table = 'reservas';
 
-    protected $fillable = ['id', 'fecha_inicio', 'fecha_fin', 'descripcion', 'dia_id', 'sala_id'];
+    protected $fillable = ['id', 'fecha_inicio', 'fecha_fin', 'descripcion', 'dia_id', 'sala_id', 'dia_semana'];
 
     public function dia()
     {
